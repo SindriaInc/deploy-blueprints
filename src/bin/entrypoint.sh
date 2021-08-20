@@ -29,23 +29,11 @@ if [ "${IAC_MODE}" == "standalone" ]; then
     BLUEPRINT_TYPE="lightsail"
   fi
 
-  # Validation blueprint bundle
-  if [ "${BLUEPRINT_BUNDLE}" == "" ]; then
-    BLUEPRINT_BUNDLE="micro_2_0"
-  fi
-
-  # Validation blueprint zone
-  if [ "${BLUEPRINT_ZONE}" == "" ]; then
-    BLUEPRINT_ZONE="eu-central-1a"
-  fi
-
 
   # Setting blueprint values - if deployments.yaml is overwritten by volume this simply doesn't take any effect. (it's a feature not a bug)
   sed -i -E "s|@@NAME@@|${BLUEPRINT_NAME}|g" /var/www/app/config/deployments.yaml
   sed -i -E "s|@@REFER@@|${BLUEPRINT_REFER}|g" /var/www/app/config/deployments.yaml
   sed -i -E "s|@@TYPE@@|${BLUEPRINT_TYPE}|g" /var/www/app/config/deployments.yaml
-  sed -i -E "s|@@BUNDLE@@|${BLUEPRINT_BUNDLE}|g" /var/www/app/config/deployments.yaml
-  sed -i -E "s|@@ZONE@@|${BLUEPRINT_ZONE}|g" /var/www/app/config/deployments.yaml
 else
   # Cleanup config directory
   rm -Rf /var/www/app/config

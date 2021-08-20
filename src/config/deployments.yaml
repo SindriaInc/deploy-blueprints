@@ -4,5 +4,3 @@ blueprints:
     name: "@@NAME@@"
     refer: "@@REFER@@"
     type: "@@TYPE@@"
-    bundle: "@@BUNDLE@@"
-    zone: "@@ZONE@@"
